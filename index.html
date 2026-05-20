@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MULTI GAMES GUAU!</title>
+<link rel="icon" type="image/png" href="favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -26,7 +27,6 @@
     cursor: crosshair;
   }
 
-  /* ESTRELLAS DE FONDO */
   body::before {
     content: '';
     position: fixed;
@@ -48,7 +48,6 @@
     z-index: 0;
   }
 
-  /* HERO */
   .hero {
     position: relative;
     min-height: 100vh;
@@ -153,7 +152,6 @@
     animation: fadeIn 1.5s ease both 0.6s;
   }
 
-  /* SECCIÓN JUEGOS */
   .games-section {
     position: relative;
     z-index: 1;
@@ -212,31 +210,24 @@
   .game-card.snake { border-color: var(--green); }
   .game-card.snake::before { background: radial-gradient(circle at 50% 50%, rgba(0,255,65,0.08), transparent); }
   .game-card.snake:hover { box-shadow: 0 0 30px rgba(0,255,65,0.4); }
-
   .game-card.tetris { border-color: var(--cyan); }
   .game-card.tetris::before { background: radial-gradient(circle at 50% 50%, rgba(0,255,255,0.08), transparent); }
   .game-card.tetris:hover { box-shadow: 0 0 30px rgba(0,255,255,0.4); }
-
   .game-card.billar { border-color: #8B4513; }
   .game-card.billar::before { background: radial-gradient(circle at 50% 50%, rgba(139,69,19,0.1), transparent); }
   .game-card.billar:hover { box-shadow: 0 0 30px rgba(139,69,19,0.5); }
-
   .game-card.pong { border-color: white; }
   .game-card.pong::before { background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.05), transparent); }
   .game-card.pong:hover { box-shadow: 0 0 30px rgba(255,255,255,0.3); }
-
   .game-card.space { border-color: var(--pink); }
   .game-card.space::before { background: radial-gradient(circle at 50% 50%, rgba(255,0,255,0.08), transparent); }
   .game-card.space:hover { box-shadow: 0 0 30px rgba(255,0,255,0.4); }
-
   .game-card.plane { border-color: var(--orange); }
   .game-card.plane::before { background: radial-gradient(circle at 50% 50%, rgba(255,140,0,0.08), transparent); }
   .game-card.plane:hover { box-shadow: 0 0 30px rgba(255,140,0,0.4); }
-
   .game-card.dodge { border-color: #9B59B6; }
   .game-card.dodge::before { background: radial-gradient(circle at 50% 50%, rgba(155,89,182,0.08), transparent); }
   .game-card.dodge:hover { box-shadow: 0 0 30px rgba(155,89,182,0.4); }
-
   .game-card.minas { border-color: #E74C3C; }
   .game-card.minas::before { background: radial-gradient(circle at 50% 50%, rgba(231,76,60,0.08), transparent); }
   .game-card.minas:hover { box-shadow: 0 0 30px rgba(231,76,60,0.4); }
@@ -267,7 +258,6 @@
     font-weight: 400;
   }
 
-  /* FOOTER */
   .footer {
     position: relative;
     z-index: 1;
@@ -305,7 +295,6 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* SEPARADOR */
   .divider {
     position: relative;
     z-index: 1;
@@ -316,6 +305,211 @@
     letter-spacing: 8px;
     padding: 20px;
     text-shadow: 0 0 10px var(--gold);
+  }
+
+  .play-section {
+    position: relative;
+    z-index: 1;
+    padding: 80px 20px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .play-inner {
+    position: relative;
+    border: 3px solid var(--gold);
+    border-radius: 20px;
+    padding: 60px 80px;
+    text-align: center;
+    background: rgba(0,0,0,0.6);
+    box-shadow:
+      0 0 60px rgba(255,215,0,0.2),
+      0 0 120px rgba(255,140,0,0.1),
+      inset 0 0 60px rgba(255,215,0,0.05);
+    max-width: 700px;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .scanlines {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.15) 2px, rgba(0,0,0,0.15) 4px);
+    pointer-events: none;
+    border-radius: 18px;
+  }
+
+  .coin-anim {
+    font-size: 64px;
+    display: block;
+    margin-bottom: 20px;
+    animation: coinSpin 2s ease-in-out infinite;
+  }
+
+  @keyframes coinSpin {
+    0%, 100% { transform: rotateY(0deg) scale(1); }
+    25% { transform: rotateY(90deg) scale(0.8); }
+    50% { transform: rotateY(180deg) scale(1); }
+    75% { transform: rotateY(270deg) scale(0.8); }
+  }
+
+  .play-title {
+    font-family: 'Press Start 2P', monospace;
+    font-size: clamp(20px, 5vw, 40px);
+    color: var(--gold);
+    text-shadow: 0 0 30px var(--gold), 4px 4px 0 var(--orange);
+    margin-bottom: 16px;
+    letter-spacing: 4px;
+  }
+
+  .play-sub {
+    font-family: 'Press Start 2P', monospace;
+    font-size: clamp(10px, 2vw, 14px);
+    color: var(--cyan);
+    text-shadow: 0 0 15px var(--cyan);
+    margin-bottom: 40px;
+    animation: blink 1.2s step-end infinite;
+  }
+
+  .play-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .buttons-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn-play {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: clamp(10px, 2vw, 14px);
+    color: var(--dark);
+    background: var(--gold);
+    border: none;
+    padding: 18px 40px;
+    border-radius: 8px;
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.1s, box-shadow 0.1s;
+    box-shadow: 0 6px 0 var(--orange), 0 0 30px rgba(255,215,0,0.5);
+    letter-spacing: 2px;
+  }
+
+  .btn-play:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 9px 0 var(--orange), 0 0 50px rgba(255,215,0,0.8);
+  }
+
+  .btn-play:active {
+    transform: translateY(3px);
+    box-shadow: 0 3px 0 var(--orange);
+  }
+
+  .btn-icon {
+    font-size: 18px;
+    animation: pulse 1s ease-in-out infinite;
+  }
+
+  .btn-separator {
+    width: 2px;
+    height: 40px;
+    background: rgba(255,215,0,0.3);
+    border-radius: 2px;
+  }
+
+  .download-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .download-label {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 7px;
+    color: rgba(255,215,0,0.5);
+    letter-spacing: 2px;
+  }
+
+  .download-btns {
+    display: flex;
+    gap: 10px;
+  }
+
+  .btn-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: clamp(6px, 1vw, 8px);
+    color: var(--dark);
+    background: var(--gold);
+    border: none;
+    padding: 10px 14px;
+    border-radius: 8px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.1s, box-shadow 0.1s;
+    box-shadow: 0 4px 0 var(--orange), 0 0 16px rgba(255,215,0,0.4);
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+
+  .btn-download:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 var(--orange), 0 0 30px rgba(255,215,0,0.7);
+  }
+
+  .btn-download:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 var(--orange);
+  }
+
+  .btn-download .os-icon { font-size: 12px; }
+
+  .coming-soon {
+    display: none;
+    font-family: 'Press Start 2P', monospace;
+    font-size: clamp(8px, 1.5vw, 11px);
+    color: var(--orange);
+    line-height: 2.5;
+    text-shadow: 0 0 15px var(--orange);
+    border: 2px dashed var(--orange);
+    padding: 16px 24px;
+    border-radius: 8px;
+    background: rgba(255,140,0,0.05);
+  }
+
+  .coming-soon small {
+    font-size: 8px;
+    color: rgba(255,255,255,0.5);
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 1px;
+  }
+
+  .blink-gold {
+    animation: blinkGold 0.8s step-end infinite;
+  }
+
+  @keyframes blinkGold {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  @media (max-width: 600px) {
+    .play-inner { padding: 40px 24px; }
+    .buttons-row { flex-direction: column; }
+    .btn-separator { width: 40px; height: 2px; }
   }
 </style>
 </head>
@@ -401,174 +595,45 @@
 
 <div class="divider">★ ★ ★ ★ ★ ★ ★ ★ ★ ★</div>
 
-<!-- SECCIÓN JUGAR -->
 <section class="play-section">
   <div class="play-inner">
     <div class="coin-anim">🪙</div>
     <h2 class="play-title">INSERT COIN</h2>
     <p class="play-sub">PRESS START TO PLAY</p>
     <div class="play-buttons">
-      <a href="#" class="btn-play" id="btnPlay" onclick="handlePlay(event)">
-        <span class="btn-icon">▶</span> JUGAR AHORA
-      </a>
+
+      <div class="buttons-row">
+        <a href="#" class="btn-play" id="btnPlay" onclick="handlePlay(event)">
+          <span class="btn-icon">▶</span> JUGAR AHORA
+        </a>
+
+        <div class="btn-separator"></div>
+
+        <div class="download-group">
+          <div class="download-label">DESCARGAR</div>
+          <div class="download-btns">
+            <a href="https://windows.com" class="btn-download" target="_blank">
+              <span class="os-icon">🪟</span> WINDOWS
+            </a>
+            <a href="https://linux.com" class="btn-download" target="_blank">
+              <span class="os-icon">🐧</span> LINUX
+            </a>
+          </div>
+        </div>
+      </div>
+
       <div class="coming-soon" id="comingSoon">
         <span class="blink-gold">⚡ PRÓXIMAMENTE ⚡</span><br>
         <small>EL JUEGO ESTARÁ DISPONIBLE PRONTO</small>
       </div>
+
     </div>
     <div class="scanlines"></div>
   </div>
 </section>
 
-<style>
-  .play-section {
-    position: relative;
-    z-index: 1;
-    padding: 80px 20px;
-    display: flex;
-    justify-content: center;
-  }
-
-  .play-inner {
-    position: relative;
-    border: 3px solid var(--gold);
-    border-radius: 20px;
-    padding: 60px 80px;
-    text-align: center;
-    background: rgba(0,0,0,0.6);
-    box-shadow:
-      0 0 60px rgba(255,215,0,0.2),
-      0 0 120px rgba(255,140,0,0.1),
-      inset 0 0 60px rgba(255,215,0,0.05);
-    max-width: 700px;
-    width: 100%;
-    overflow: hidden;
-  }
-
-  .scanlines {
-    position: absolute;
-    inset: 0;
-    background: repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      rgba(0,0,0,0.15) 2px,
-      rgba(0,0,0,0.15) 4px
-    );
-    pointer-events: none;
-    border-radius: 18px;
-  }
-
-  .coin-anim {
-    font-size: 64px;
-    display: block;
-    margin-bottom: 20px;
-    animation: coinSpin 2s ease-in-out infinite;
-  }
-
-  @keyframes coinSpin {
-    0%, 100% { transform: rotateY(0deg) scale(1); }
-    25% { transform: rotateY(90deg) scale(0.8); }
-    50% { transform: rotateY(180deg) scale(1); }
-    75% { transform: rotateY(270deg) scale(0.8); }
-  }
-
-  .play-title {
-    font-family: 'Press Start 2P', monospace;
-    font-size: clamp(20px, 5vw, 40px);
-    color: var(--gold);
-    text-shadow: 0 0 30px var(--gold), 4px 4px 0 var(--orange);
-    margin-bottom: 16px;
-    letter-spacing: 4px;
-  }
-
-  .play-sub {
-    font-family: 'Press Start 2P', monospace;
-    font-size: clamp(10px, 2vw, 14px);
-    color: var(--cyan);
-    text-shadow: 0 0 15px var(--cyan);
-    margin-bottom: 40px;
-    animation: blink 1.2s step-end infinite;
-  }
-
-  .play-buttons {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-  }
-
-  .btn-play {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    font-family: 'Press Start 2P', monospace;
-    font-size: clamp(10px, 2vw, 14px);
-    color: var(--dark);
-    background: var(--gold);
-    border: none;
-    padding: 18px 40px;
-    border-radius: 8px;
-    text-decoration: none;
-    cursor: pointer;
-    position: relative;
-    transition: transform 0.1s, box-shadow 0.1s;
-    box-shadow: 0 6px 0 var(--orange), 0 0 30px rgba(255,215,0,0.5);
-    letter-spacing: 2px;
-  }
-
-  .btn-play:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 9px 0 var(--orange), 0 0 50px rgba(255,215,0,0.8);
-  }
-
-  .btn-play:active {
-    transform: translateY(3px);
-    box-shadow: 0 3px 0 var(--orange);
-  }
-
-  .btn-icon {
-    font-size: 18px;
-    animation: pulse 1s ease-in-out infinite;
-  }
-
-  .coming-soon {
-    display: none;
-    font-family: 'Press Start 2P', monospace;
-    font-size: clamp(8px, 1.5vw, 11px);
-    color: var(--orange);
-    line-height: 2.5;
-    text-shadow: 0 0 15px var(--orange);
-    border: 2px dashed var(--orange);
-    padding: 16px 24px;
-    border-radius: 8px;
-    background: rgba(255,140,0,0.05);
-  }
-
-  .coming-soon small {
-    font-size: 8px;
-    color: rgba(255,255,255,0.5);
-    font-family: 'Orbitron', sans-serif;
-    letter-spacing: 1px;
-  }
-
-  .blink-gold {
-    animation: blinkGold 0.8s step-end infinite;
-  }
-
-  @keyframes blinkGold {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-  }
-
-  @media (max-width: 600px) {
-    .play-inner { padding: 40px 24px; }
-  }
-</style>
-
 <script>
-  // Cambia el href del botón cuando tengas el enlace listo
-  var GAME_URL = "https://acm-07.itch.io/multi-games"; // <-- PON AQUÍ TU ENLACE CUANDO ESTÉ LISTO
+  var GAME_URL = "https://acm-07.itch.io/multi-games";
 
   function handlePlay(e) {
     e.preventDefault();
@@ -580,18 +645,6 @@
     }
   }
 </script>
-        <!-- BOTONES DE DESCARGA -->
-      <div>
-        <div class="download-label">— DESCARGAR —</div>
-        <div class="download-buttons">
-          <a href="https://windows.com" class="btn-download" target="_blank">
-            <span class="os-icon">🪟</span> WINDOWS
-          </a>
-          <a href="https://linux.com" class="btn-download" target="_blank">
-            <span class="os-icon">🐧</span> LINUX
-          </a>
-        </div>
-      </div>
 
 <div class="divider">★ ★ ★ ★ ★ ★ ★ ★ ★ ★</div>
 
